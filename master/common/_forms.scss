@@ -1,0 +1,71 @@
+
+.form {}
+
+.form-part {
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    width: 80%;
+    border-radius: 2px;
+    margin: 0 auto;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.11);
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-control {
+    border-radius: 2px;
+    padding-left: 38px;
+    font-size: $font-size-xs;
+    color: #666666;
+
+    &:focus{
+      border-color: $brand-primary;
+    }
+
+    &:focus ~ .input-icon {
+        background-color: $brand-primary;
+    }
+}
+
+.input-icon {
+    position: absolute;
+    width: $height-input;
+    top: 0;
+    left: 0;
+    height: $height-input;
+    padding-top: 3px;
+    padding-left: 8px;
+    background-color: #dcddde;
+    border-radius: 2px 0 0 2px;
+}
+//
+
+$custom-select-indicator: url('../images/legend/#{$theme-name}/iconimg-selected.png');
+.custom-checkbox {
+    .custom-control-input {
+        width: 100%;
+        height: 100%;
+
+        &:checked ~ .custom-control-indicator {
+            background-color: $gray-bg;
+            background-size: 10px auto;
+            background-image: $custom-select-indicator;
+        }
+
+        &:checked ~ .custom-control-text {
+            color: $brand-primary;
+        }
+    }
+
+    .custom-control-indicator {
+        width: 14px;
+        height: 14px;
+        padding: 0;
+        border: 1px solid $brand-primary;
+        background-color: $gray-bg;
+        border-radius: 2px;
+    }
+}

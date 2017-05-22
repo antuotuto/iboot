@@ -1,0 +1,171 @@
+.list {}
+
+.list .list-title {
+    line-height: 2rem;
+    font-size: $font-size-xs;
+    background-color: #f3f3f3;
+    color: #535353;
+    font-weight: 200;
+    padding-left: $container-p;
+}
+
+.list .list-detail {
+    padding-left: $container-p;
+    position: relative;
+    line-height: 4rem;
+    margin: 0;
+    background-color: white;
+
+    & + .list-detail {
+        margin-top: 4px;
+    }
+
+    .content {
+        display: block;
+        width: 100%;
+        color: #666666;
+        padding: 10px 20px 10px 0;
+        border-bottom: 1px solid $gray-bg;
+    }
+
+    .title {
+        font-size: $font-size-sm;
+        margin-bottom: 10px;
+        color: #434343;
+        padding-right: 20px;
+    }
+
+    .info {
+        font-size: $font-size-xxs;
+        line-height: 1;
+        color: #a5a5a5;
+
+        .iconimg {
+            width: 10px;
+            margin-right: 5px;
+        }
+    }
+
+    .jiantou {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        padding-right: 20px;
+    }
+
+    .date {
+        width: 150px;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .location {
+        @include text-truncate();
+        display: block;
+    }
+
+    .deliver-ed {
+        line-height: 2rem;
+        font-size: $font-size-xs;
+        color: #959595;
+
+        .iconimg {
+            margin-right: 4px;
+        }
+    }
+
+    .delete {
+        position: absolute;
+        top: 10px;
+        right: $container-p;
+        line-height: 1;
+
+        .iconimg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.list-job {
+    padding: 0 $container-p;
+}
+
+.item-job {
+    @include clearfix();
+    position: relative;
+    padding: 10px 0 8px;
+    border-bottom: 1px solid #b8b8b8;
+    line-height: 1;
+
+    &:last-child {
+        border: 0;
+    }
+
+    .custom-checkbox {
+        float: left;
+        margin-right: 0.4rem;
+        line-height: 1.4;
+        margin-top: -3px;
+
+        .custom-control-text {
+            font-size: $font-size-xs !important;
+        }
+    }
+
+    .content {
+        overflow: hidden;
+    }
+
+    .title {
+        // @include text-truncate();
+        font-size: $font-size-sm;
+        color: #333333;
+        padding-right: 14px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .info {
+        @include clearfix();
+        color: #999999;
+        line-height: 1.2;
+        margin-bottom: 0px;
+        font-size: $font-size-xxs;
+        color: #a5a5a5;
+
+        .iconimg {
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+        }
+    }
+
+    .date {
+        float: right;
+    }
+
+    .location {
+        @include text-truncate();
+        display: block;
+    }
+
+    .pc {
+        font-size: 10px;
+        color: #7e7e7e;
+
+        .icon-pc {
+            width: 11px;
+            height: 11px;
+            position: relative;
+            top: -2px;
+            margin-right: 4px;
+        }
+    }
+
+    .hot {
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+}

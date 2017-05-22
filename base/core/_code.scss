@@ -1,0 +1,60 @@
+// Code
+$code-color: #bd4147 !default;
+$code-bg: #f7f7f9 !default;
+$kbd-color: #fff !default;
+$kbd-bg: #333 !default;
+$pre-bg: #f7f7f9 !default;
+$pre-color: $gray-dark !default;
+$pre-border-color: #ccc !default;
+// Inline and block code styles
+code,
+kbd,
+pre,
+samp {
+    font-family: $font-family-monospace;
+}
+// Inline code
+code {
+    padding: 0.4rem 0.2rem;
+    font-size: 90%;
+    color: $code-color;
+    background-color: $code-bg;
+    @include border-radius($border-radius);
+}
+// User input typically entered via keyboard
+kbd {
+    padding: 0.4rem 0.2rem;
+    font-size: 90%;
+    color: $kbd-color;
+    background-color: $kbd-bg;
+    @include border-radius(2px);
+    @include box-shadow($kbd-box-shadow);
+
+    kbd {
+        padding: 0;
+        font-size: 100%;
+        font-weight: $nested-kbd-font-weight;
+        @include box-shadow(none);
+    }
+}
+// Blocks of code
+pre {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 80%;
+    color: $pre-color;
+
+    code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        background-color: transparent;
+        border-radius: 0;
+    }
+}
+// Enable scrollable blocks of code
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}

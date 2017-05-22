@@ -1,0 +1,41 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+
+    &.active {
+        display: block;
+    }
+}
+
+.modal-content {
+    position: fixed;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    background-color: white;
+    overflow: hidden;
+}
+
+.modal-header {
+    position: relative;
+    @include clearfix();
+}
+
+.modal-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 14px;
+    height: 14px;
+}
+
+.modal-body {
+    @include clearfix();
+}

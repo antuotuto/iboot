@@ -1,0 +1,33 @@
+.inner-header {
+    background-color: $gray-three;
+    padding: 15px;
+    color: white;
+
+    .text {
+        overflow: hidden;
+    }
+
+    .title {
+        margin-bottom: 30px;
+    }
+
+    .info {
+        font-size: $font-size-xs;
+
+        .iconimg {
+            width: 12px;
+            height: 12px;
+            margin-right: 4px;
+        }
+    }
+
+    .date {
+        float: right;
+        margin-left: 10px;
+    }
+
+    .location {
+        @include text-truncate();
+        display: block;
+    }
+}

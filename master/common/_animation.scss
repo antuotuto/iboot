@@ -1,0 +1,8 @@
+@keyframes showMenu {
+  from{
+    transform: scale(0) translate3d(50%,50%,0);
+  }
+  to{
+    transform: scale(1) translate3d(-50%,-50%,0);
+  }
+}

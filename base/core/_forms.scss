@@ -1,0 +1,400 @@
+/**/
+//文本域控件 text、 password、datetime、datetime-local、date、month、time、week、number、email、url、search、tel、color
+//选择菜单 multiple、size
+//多行文本域	N/A
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: $font-size-sm; //14px
+    line-height: 20px;
+    padding: 5px 5px;
+    //
+    color: $input-color;
+    background-color: white;
+    background-image: none;
+    background-clip: padding-box;
+    //
+    border: 1px solid gray;
+    border-radius: 0;
+    //
+    @include box-shadow($input-box-shadow);
+    @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+
+    &::placeholder {
+        color: $input-color-placeholder;
+        opacity: 1;
+    }
+    // Unstyle the caret on `<select>`s in IE10+.
+    &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+    }
+
+    &:disabled,
+    &[readonly] {
+        // background-color: $input-bg-disable;
+        // background-color: $input-bg-disable;
+        opacity: 1;
+    }
+
+    &:disabled {
+        cursor: $cursor-disabled;
+    }
+    /*hover*/
+    @include form-control-hover();
+    /*focus*/
+    @include form-control-focus();
+}
+
+select.form-control {
+    &:not([size]):not([multiple]) {
+        $select-border-width: ($border-width * 2);
+        height: calc(#{$height-input} - #{$select-border-width});
+    }
+
+    &:focus::-ms-value {
+        color: $input-color;
+        background-color: $input-bg;
+    }
+}
+// Make file inputs better match text inputs by forcing them to new lines.
+
+.form-control-file,
+.form-control-range {
+    display: block;
+}
+//
+// Labels
+//
+// For use with horizontal and inline forms, when you need the label text to
+// align with the form controls.
+
+.col-form-label {
+    padding-top: $spacer-y*2;
+    padding-bottom: $spacer-y*2;
+    margin-bottom: 0; // Override the `<label>` default
+}
+
+.col-form-label-lg {
+    padding-top: $spacer-y*3;
+    padding-bottom: $spacer-y*3;
+    font-size: $font-size-lg;
+}
+
+.col-form-label-sm {
+    padding-top: $spacer-y*1;
+    padding-bottom: $spacer-y*1;
+    font-size: $font-size-sm;
+}
+//
+// Legends
+//
+// For use with horizontal and inline forms, when you need the legend text to
+// be the same size as regular labels, and to align with the form controls.
+
+.col-form-legend {
+    padding-top: $spacer-y;
+    padding-bottom: $spacer-y;
+    margin-bottom: 0;
+    font-size: $font-size-base;
+}
+// Static form control text
+//
+// Apply class to an element to make any string of text align with labels in a
+// horizontal form layout.
+
+.form-control-static {
+    padding-top: $spacer-y;
+    padding-bottom: $spacer-y;
+    line-height: $line-height-base;
+    border: solid transparent;
+    border-width: 1px 0;
+
+    &.form-control-lg,
+    &.form-control-sm {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.form-control-sm {
+    padding: $spacer-y*1 $spacer-x*1;
+    font-size: $font-size-sm;
+    @include border-radius($border-radius-sm);
+}
+
+select.form-control-sm {
+    &:not([size]):not([multiple]) {
+        height: $height-input;
+    }
+}
+
+.form-control-lg {
+    padding: $spacer-y*3 $spacer-x*3;
+    font-size: $font-size-lg;
+    @include border-radius($border-radius-lg);
+}
+
+select.form-control-lg {
+    &:not([size]):not([multiple]) {
+        height: $height-input;
+    }
+}
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+    & + .form-group {
+        margin-top: $spacer;
+    }
+}
+
+.form-text {
+    display: block;
+    margin-top: ($spacer * .25);
+}
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.form-check {
+    position: relative;
+    display: block;
+    margin-bottom: ($spacer * .75);
+    // Move up sibling radios or checkboxes for tighter spacing
+    + .form-check {
+        margin-top: -.25rem;
+    }
+
+    &.disabled {
+        .form-check-label {
+            color: $text-muted;
+            cursor: $cursor-disabled;
+        }
+    }
+}
+
+.form-check-label {
+    padding-left: 1.25rem;
+    margin-bottom: 0; // Override default `<label>` bottom margin
+    cursor: pointer;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: 0.25rem;
+    margin-left: -1.25rem;
+
+    &:only-child {
+        position: static;
+    }
+}
+// Radios and checkboxes on same line
+
+.form-check-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 1.25rem;
+    margin-bottom: 0; // Override default `<label>` bottom margin
+    vertical-align: middle;
+    cursor: pointer;
+
+    + .form-check-inline {
+        margin-left: 0.75rem;
+    }
+
+    &.disabled {
+        color: $text-muted;
+        cursor: $cursor-disabled;
+    }
+}
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+.form-control-feedback {
+    margin-top: ($spacer * .25);
+}
+
+.form-control-danger,
+.form-control-success,
+.form-control-warning {
+    padding-right: ($spacer-x * 3);
+    background-repeat: no-repeat;
+    background-position: center right ($height-input / 4);
+    background-size: ($height-input / 2) ($height-input / 2);
+}
+// Form validation states
+
+.has-success {
+    @include form-control-validation($brand-success);
+
+    .form-control-success {
+        background-image: $form-icon-success;
+    }
+}
+
+.has-warning {
+    @include form-control-validation($brand-warning);
+
+    .form-control-warning {
+        background-image: $form-icon-warning;
+    }
+}
+
+.has-danger {
+    @include form-control-validation($brand-danger);
+
+    .form-control-danger {
+        background-image: $form-icon-danger;
+    }
+}
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+
+.form-inline {
+    // Kick in the inline
+    @include media-breakpoint-up(sm) {
+        // Inline-block all the things for "inline"
+        .form-group {
+            display: inline-block;
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+        // Allow folks to *not* use `.form-group`
+        .form-control {
+            display: inline-block;
+            width: auto; // Prevent labels from stacking above inputs in `.form-group`
+            vertical-align: middle;
+        }
+        // Make static controls behave like regular ones
+        .form-control-static {
+            display: inline-block;
+        }
+
+        .input-group {
+            display: inline-table;
+            width: auto;
+            vertical-align: middle;
+
+            .form-control,
+            .input-group-addon,
+            .input-group-btn {
+                width: auto;
+            }
+        }
+        // Input groups need that 100% width though
+        .input-group > .form-control {
+            width: 100%;
+        }
+
+        .form-control-label {
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+        // Remove default margin on radios/checkboxes that were used for stacking, and
+        // then undo the floating of radios and checkboxes to match.
+        .form-check {
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+
+        .form-check-label {
+            padding-left: 0;
+        }
+
+        .form-check-input {
+            position: relative;
+            margin-left: 0;
+        }
+        // Re-override the feedback icon.
+        .has-feedback .form-control-feedback {
+            top: 0;
+        }
+    }
+}
+/*custom-control*/
+.custom-control {
+    position: relative;
+    line-height: inherit;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.custom-control-input {
+    position: absolute;
+    opacity: 0;
+
+    &:checked ~ .custom-control-indicator {
+        background-clip: content-box;
+        background-color: $brand-primary;
+    }
+
+    &:checked ~ .custom-control-text {}
+}
+
+.custom-control-indicator {
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid $brand-primary;
+    width: 1rem;
+    height: 1rem;
+    padding: 1px;
+    //
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    //
+    background-color: transparent;
+}
+
+.custom-control-text {
+    line-height: inherit;
+    vertical-align: middle;
+}
+/*select*/
+.custom-select {
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+    padding-right: $custom-select-padding-x \9;
+    // color: inherit;
+    vertical-align: middle;
+    background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+    background-image: none \9;
+    background-size: $custom-select-bg-size;
+    border: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &:focus {
+        outline: none;
+
+        &::-ms-value {
+            // color: $input-color;
+            // background-color: $input-bg;
+        }
+    }
+
+    &:disabled {
+        // color: $custom-select-disabled-color;
+        // cursor: $cursor-disabled;
+        // background-color: $custom-select-disabled-bg;
+    }
+    // Hides the default caret in IE11
+    &::-ms-expand {
+        opacity: 0;
+    }
+}

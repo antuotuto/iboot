@@ -1,0 +1,48 @@
+.btn {}
+
+.btn-disabled {
+    @include button-variant($gray, $gray-light, $gray-light);
+}
+
+.btn-primary {
+    @include button-variant(white, $brand-primary, $brand-primary);
+    border-radius: 4px;
+}
+
+.btn-outline-white {
+    $color: white;
+    color: $color;
+    background-image: none;
+    background-color: transparent;
+    border-color: $color;
+}
+
+.btn-capsule {
+    border-radius: 1000px;
+    background-color: white;
+    color: $brand-primary;
+}
+// flex-btn
+.flex-btn {
+    width: 100%;
+    padding: 20px 0;
+
+    .flex-item {
+        flex-grow: 1;
+        width: 50%;
+        padding: 0 25px;
+    }
+
+    .btn {
+        font-size: $font-size-sm;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        border-radius: 4px;
+
+        .iconimg {
+            margin-right: 4px;
+        }
+    }
+}

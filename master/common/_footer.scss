@@ -1,0 +1,44 @@
+.inner-footer {
+    padding: 40px 25% 0;
+    margin: 0 -25%;
+    border-radius: 100% 100% 0 0;
+    background-color: #e4e4e4;
+    overflow: hidden;
+}
+
+.info-company {
+    @include clearfix();
+    position: relative;
+    padding: 0 12px;
+
+    .qr {
+        float: right;
+        width: 115px;
+        padding-left: 5px;
+
+        .text {
+            font-size: $font-size-xs;
+            text-align: center;
+            margin-top: 5px;
+        }
+    }
+
+    .logo {
+        padding: 0 30px 15px;
+        text-align: center;
+
+        img {
+          max-width: 240px;
+        }
+    }
+
+    .info {
+        overflow: hidden;
+        font-size: $font-size-xxs;
+        color: #4e4e4e;
+
+        .text {
+            color: $gray-four;
+        }
+    }
+}

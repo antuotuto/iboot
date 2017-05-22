@@ -1,0 +1,357 @@
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num == null {
+      // Do nothing
+    } @else if not comparable($prev-num, $num) {
+      @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    } @else if $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
+//=========================================================
+// Colors
+$gray-dark:                 #373a3c !default;
+$gray:                      #55595c !default;
+$gray-light:                #b4b4b4 !default;
+$gray-lighter:              #c8c8c8 !default;
+$gray-lightest:             #f0f0f0 !default;
+
+$brand-primary: #ea6f5a !default;
+$brand-success: #7caf49 !default;
+$brand-info: #6dacf4 !default;
+$brand-warning: #fbbc05 !default;
+$brand-danger: #ea4335 !default;
+$brand-inverse: $gray-dark !default;
+//=========================================================
+// Options
+$enable-flex:               false !default;
+$enable-rounded:            true !default;
+$enable-shadows:            true !default;
+$enable-gradients:          true !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  true !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+//=========================================================
+// Spacing
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  1: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  2: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  3: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  ),
+) !default;
+$border-width: 1px !default;
+
+//=========================================================
+// <body>
+$body-bg:    #fff !default;
+$body-color: $gray-dark !default;
+//=========================================================
+// <a>
+$link-color:            $gray !default;
+$link-decoration:       none !default;
+$link-hover-color:      $brand-primary !default;
+$link-hover-decoration: none !default;
+//=========================================================
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+//=========================================================
+// Grid containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+//=========================================================
+// Grid columns
+$grid-columns:               12 !default;
+$grid-gutter-width-base:     30px !default;
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+) !default;
+//=========================================================
+// border-radius
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+//=========================================================
+// Typography
+// Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: Arial,verdana,Microsoft YaHei,WenQuanYi Micro Hei,BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+// <html>
+$font-size-root: 16px !default;
+// <html>
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+// <html>
+$font-size-base: 1rem !default;
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .875rem !default;
+$font-size-xs:   .75rem !default;
+$font-size-xxs:   .625rem !default;
+
+// line-height
+$line-height-base: 1.5 !default;
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$btn-line-height:                32px !default;
+
+$height-input: 32px !default;
+//=========================================================
+
+$text-muted: $gray-light !default;
+
+$abbr-border-color: $gray-light !default;
+
+$blockquote-small-color:  $gray-light !default;
+$blockquote-font-size:    ($font-size-base * 1.25) !default;
+$blockquote-border-color: $gray-lighter !default;
+$blockquote-border-width: .25rem !default;
+
+$hr-border-color: rgba(0,0,0,.1) !default;
+$hr-border-width: $border-width !default;
+
+$mark-padding: .2em !default;
+
+$dt-font-weight: bold !default;
+
+$kbd-box-shadow:         inset 0 -.1rem 0 rgba(0,0,0,.25) !default;
+$nested-kbd-font-weight: bold !default;
+
+$list-inline-padding: 5px !default;
+//=========================================================
+//=========================================================
+// Components
+// Define common padding and border radius sizes and more.
+$component-active-color: #fff !default;
+$component-active-bg:    $brand-primary !default;
+
+$caret-width:            .3em !default;
+$caret-width-lg:         $caret-width !default;
+//=========================================================
+/*normal*/
+$btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075) !default;
+$btn-box-shadow:                 0;
+/*active*/
+$btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
+$btn-active-box-shadow:          0;
+/*disabled*/
+$btn-link-disabled-color:        $gray-light !default;
+
+$btn-block-spacing-y:            .5rem !default;
+$btn-toolbar-margin:             .5rem !default;
+//-------------------------------------------------------------
+//四状态：normal，hover，focus，disabled
+//normal
+$input-color:                    $gray !default;
+$input-bg:                       #fff !default;
+$input-border-color:             rgba(0,0,0,.15) !default;
+$input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
+$input-box-shadow:               none;
+//hover
+$input-color-hover:              $input-color !default;
+$input-bg-hover:                 $input-bg !default;
+$input-border-hover:             #66afe9 !default;
+$input-border-hover:             $gray-light;
+$input-box-shadow-hover:         $input-box-shadow, 0 0 8px rgba(102,175,233,.6) !default;
+$input-box-shadow-hover:         none;
+//foucs
+$input-color-focus:              $input-color !default;
+$input-bg-focus:                 $input-bg !default;
+$input-border-focus:             #66afe9 !default;
+$input-border-focus:             $brand-primary;
+$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba(102,175,233,.6) !default;
+$input-box-shadow-focus:         none;
+//disabled
+$input-bg-disabled:              $gray-lighter !default;
+//-------------------------------------------------------------
+//
+$input-btn-border-width:         $border-width !default; // For form controls and buttons
+
+$input-color-placeholder:        #999 !default;
+
+$form-group-margin-bottom:       $spacer-y !default;
+
+$input-group-addon-bg:           $gray-lighter !default;
+$input-group-addon-border-color: $input-border-color !default;
+
+$cursor-disabled:                not-allowed !default;
+
+$custom-control-gutter:   1.5rem !default;
+$custom-control-spacer-x: 1rem !default;
+$custom-control-spacer-y: .25rem !default;
+
+$custom-control-indicator-size:       1rem !default;
+$custom-control-indicator-bg:         #ddd !default;
+$custom-control-indicator-bg-size:    50% 50% !default;
+$custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba(0,0,0,.1) !default;
+
+$custom-control-disabled-cursor:             $cursor-disabled !default;
+$custom-control-disabled-indicator-bg:       #eee !default;
+$custom-control-disabled-description-color:  #767676 !default;
+
+$custom-control-checked-indicator-color:      #fff !default;
+$custom-control-checked-indicator-bg:         #0074d9 !default;
+$custom-control-checked-indicator-box-shadow: none !default;
+
+$custom-control-focus-indicator-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9 !default;
+
+$custom-control-active-indicator-color:      #fff !default;
+$custom-control-active-indicator-bg:         #84c6ff !default;
+$custom-control-active-indicator-box-shadow: none !default;
+
+$custom-checkbox-radius: $border-radius !default;
+$custom-checkbox-checked-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-checked-indicator-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") !default;
+
+$custom-checkbox-indeterminate-bg: #0074d9 !default;
+$custom-checkbox-indeterminate-indicator-color: $custom-control-checked-indicator-color !default;
+$custom-checkbox-indeterminate-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indeterminate-indicator-color}' d='M0 2h4'/%3E%3C/svg%3E") !default;
+$custom-checkbox-indeterminate-box-shadow: none !default;
+
+$custom-radio-radius: 50% !default;
+$custom-radio-checked-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-checked-indicator-color}'/%3E%3C/svg%3E") !default;
+//select
+$custom-select-padding-x:          .75rem  !default;
+$custom-select-padding-y:          .375rem !default;
+$custom-select-indicator-padding:  1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$custom-select-color:          $input-color !default;
+$custom-select-disabled-color: $gray-light !default;
+$custom-select-bg:            #fff !default;
+$custom-select-disabled-bg:   $gray-lighter !default;
+$custom-select-bg-size:       8px 10px !default; // In pixels because image dimensions
+$custom-select-indicator-color: #333 !default;
+$custom-select-indicator:     url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !default;
+$custom-select-border-width:  $input-btn-border-width !default;
+$custom-select-border-color:  $input-border-color !default;
+$custom-select-border-radius: $border-radius !default;
+
+$custom-select-focus-border-color: #51a7e8 !default;
+$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5) !default;
+
+$custom-select-sm-padding-y: .2rem !default;
+$custom-select-sm-font-size: 75% !default;
+//文件上传控件
+$custom-file-height:           2.5rem !default;
+$custom-file-width:            14rem !default;
+$custom-file-focus-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9 !default;
+
+$custom-file-padding-x:     .5rem !default;
+$custom-file-padding-y:     1rem !default;
+$custom-file-line-height:   1.5 !default;
+$custom-file-color:         #555 !default;
+$custom-file-bg:            #fff !default;
+$custom-file-border-width:  $border-width !default;
+$custom-file-border-color:  #ddd !default;
+$custom-file-border-radius: $border-radius !default;
+$custom-file-box-shadow:    inset 0 .2rem .4rem rgba(0,0,0,.05) !default;
+$custom-file-button-color:  $custom-file-color !default;
+$custom-file-button-bg:     #eee !default;
+$custom-file-text: (
+  placeholder: (
+    en: "Choose file..."
+  ),
+  button-label: (
+    en: "Browse"
+  )
+) !default;
+//=========================================================
+// Form validation icons
+$form-icon-success-color: $brand-success !default;
+$form-icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-icon-success-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
+
+$form-icon-warning-color: $brand-warning !default;
+$form-icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-icon-warning-color}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
+
+$form-icon-danger-color: $brand-danger !default;
+$form-icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E") !default;
+//=========================================================
+// Z-index master list
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+$zindex-dropdown-backdrop:  990 !default;
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-navbar-sticky:     1030 !default;
+$zindex-modal-bg:          1040 !default;
+$zindex-modal:             1050 !default;
+//=========================================================
+// Form states and alerts
+//
+// Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             #3c763d !default;
+$state-success-bg:               #dff0d8 !default;
+$state-success-border:           darken($state-success-bg, 5%) !default;
+
+$state-info-text:                #31708f !default;
+$state-info-bg:                  #d9edf7 !default;
+$state-info-border:              darken($state-info-bg, 7%) !default;
+
+$state-warning-text:             #8a6d3b !default;
+$state-warning-bg:               #fcf8e3 !default;
+$mark-bg:                        $state-warning-bg !default;
+$state-warning-border:           darken($state-warning-bg, 5%) !default;
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border:            darken($state-danger-bg, 5%) !default;
+//=========================================================
+// Tables
+// Customizes the `.table` component with basic values, each used across all table variations.
+$table-cell-padding:            .75rem !default;
+$table-sm-cell-padding:         .3rem !default;
+
+$table-bg:                      transparent !default;
+$table-bg-accent:               rgba(0,0,0,.05) !default;
+$table-bg-hover:                rgba(0,0,0,.075) !default;
+$table-bg-active:               $table-bg-hover !default;
+
+$table-border-width:            $border-width !default;
+$table-border-color:            $gray-lighter !default;
+//=========================================================

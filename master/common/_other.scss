@@ -1,0 +1,25 @@
+a:visited {
+    color: inherit;
+}
+
+img {
+    &.logo-legend {}
+    &.logo-hony-capital{}
+    &.logo-jc {
+      max-width: 190px !important;
+    }
+    &.logo-legend-capital {
+      max-width: 160px !important;
+    }
+    &.logo-lakala {}
+    &.logo-legend-star {
+      max-width: 180px !important;
+    }
+    &.logo-eloancn {}
+    &.logo-zhengqi {}
+}
+
+.link-more {
+    color: $brand-primary !important;
+    border-bottom: 1px solid $brand-primary;
+}
